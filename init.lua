@@ -26,12 +26,15 @@ vim.g.mapleader = " "
 -- basic key remap
 --move lines with ctrl-shift j/k in various modes
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
-vim.keymap.set("n", "<C-S-j>", ":m .+1<CR>==")
-vim.keymap.set("n", "<C-S-k>", ":m .-2<CR>==")
-vim.keymap.set("i", "<C-S-j>", "<Esc>:m .+1<CR>==gi")
-vim.keymap.set("i", "<C-S-k>", "<Esc>:m .-2<CR>==gi")
-vim.keymap.set("v", "<C-S-k>", ":m '<-2<CR>gv=gv")
-vim.keymap.set("v", "<C-S-k>", ":m '<-2<CR>gv=gv")
+--vim.keymap.set("n", "<C-S-j>", ":m .+1<CR>==")
+--vim.keymap.set("n", "<C-S-k>", ":m .-2<CR>==")
+--vim.keymap.set("i", "<C-S-j>", "<Esc>:m .+1<CR>==gi")
+--vim.keymap.set("i", "<C-S-k>", "<Esc>:m .-2<CR>==gi")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+--escape terminal mode
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n><C-w>w]])
 
 --enable exrc
 vim.o.exrc = true
