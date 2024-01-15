@@ -8,7 +8,7 @@ return{
     config = function()
       require("harpoon").setup()
       --keymap harpoon
-      local harpoon=require("harpoon")
+      --local harpoon=require("harpoon")
       local ui=require("harpoon.ui")
       local mark=require("harpoon.mark")
       vim.keymap.set("n", "<leader>a", mark.add_file)
