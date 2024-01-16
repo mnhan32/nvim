@@ -1,9 +1,6 @@
 return {
   {
     'williamboman/mason.nvim',
-    config = function()
-      require("mason").setup {}
-    end
   },
   {
     'williamboman/mason-lspconfig.nvim',
@@ -54,51 +51,49 @@ return {
         if client.supports_method('textdocument/formatting') then
           lsp_format.on_attach(client)
         end
-        --
+        -- keybind to autoformat
         local opts = { buffer = bufnr }
         vim.keymap.set({ 'n', 'x' }, 'gq', function()
           vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
         end, opts)
       end)
-      -- setup lua
-      require("lspconfig").lua_ls.setup({})
-      require("lspconfig").pyright.setup({})
-      require("lspconfig").ruff_lsp.setup({})
-      -- *******
-      -- if I wan to customize lsp setting, ex. lua_ls
-      --
-      --require('mason-lspconfig').setup({
-      --  handlers = {
-      --    lsp_zero.default_setup,
-      --    lua_ls = function()
-      --      local lua_opts = lsp_zero.nvim_lua_ls()
-      --      require('lspconfig').lua_ls.setup(lua_opts)
-      --    end,
-      --  },
-      --})
+      -- ***********
+      -- use mason
+      require("mason").setup({})
+      -- setup lsp
+      require("lspconfig").lua_ls.setup({
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { 'vim' },
+            },
+          },
+        },
+      })
+      require("lspconfig").pylsp.setup({})
+      --require("lspconfig").pyright.setup({})
+      --require("lspconfig").ruff_lsp.setup({})
       --
       -- ******
       --cmp autocomplete/suggestion with luasnip ui
-      --lsp_zero will set up autocomplete, the following are ref
-      --local cmp = require("cmp")
-      --local cmp_select = {behavior = cmp.SelectBehavior.Select}
-      --cmp.setup({
-      --  source = {
-      --    {name = 'path'},
-      --    {name = 'nvim_lsp'},
-      --    {name = 'nvim_lua'},
-      --    {name = 'luasnip', keyword_length = 3},
-      --    {name = 'buffer', keyword_length = 3},
-      --  },
-      --  formatting = lsp_zero.cmp_format(),
-      --  mapping = cmp.mapping.preset.insert({
-      --    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-      --    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-      --    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-      --    ['<C-S-Space>'] = cmp.mapping.complete(),
-      --  }),
-      --})
-      --
+      local cmp = require("cmp")
+      local cmp_select = { behavior = cmp.SelectBehavior.Select }
+      cmp.setup({
+        source = {
+          { name = 'path' },
+          { name = 'nvim_lsp' },
+          { name = 'nvim_lua' },
+          { name = 'luasnip', keyword_length = 3 },
+          { name = 'buffer',  keyword_length = 3 },
+        },
+        formatting = lsp_zero.cmp_format(),
+        mapping = cmp.mapping.preset.insert({
+          ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+          ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+          ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+          ['<C-S-Space>'] = cmp.mapping.complete(),
+        }),
+      })
     end
   },
 }
