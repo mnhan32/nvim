@@ -111,7 +111,14 @@ return {
       -- outline
       local outline = require("outline")
       vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
-      outline.setup({})
+      outline.setup({
+        symbols = {
+          filter = {
+            default = { 'String', exclude = true },
+            python = { 'Function', 'Class' },
+          }
+        }
+      })
       --
       -- end of outline config
     end
