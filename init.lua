@@ -9,6 +9,9 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.mouse = "i"
 
+--popup menu transparency
+vim.opt.pumblend = 20
+
 --use system clipboard,
 --on archlinux, install xclip for X11 system clipboard
 --because nvim on archlinux pacman compile nvim without clipboard

@@ -10,6 +10,7 @@ return {
   { 'L3MON4D3/LuaSnip', },
   { 'rafamadriz/friendly-snippets', },
   { 'lukas-reineke/lsp-format.nvim', },
+  { 'hedyhli/outline.nvim', },
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v3.x',
@@ -77,12 +78,14 @@ return {
           { name = 'luasnip', keyword_length = 5 },
           { name = 'buffer',  keyword_length = 5 },
         },
+
         formatting = lsp_zero.cmp_format(),
         mapping = cmp.mapping({
           ['<Tab>'] = cmp_action.tab_complete(),
           ['S<Tab>'] = cmp_action.select_prev_or_fallback(),
           --['<C-y>'] = cmp.mapping.confirm({ select = true }),
           --['<A-t>'] = cmp.mapping.complete(),
+          --
           ['<Up>'] = cmp.mapping(function(fallback)
             cmp.close()
             fallback()
@@ -103,6 +106,14 @@ return {
       })
       --
       --end of cmp config
+
+      -- **
+      -- outline
+      local outline = require("outline")
+      vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
+      outline.setup({})
+      --
+      -- end of outline config
     end
   },
 }
