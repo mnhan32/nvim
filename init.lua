@@ -7,8 +7,9 @@ vim.o.smarttab = true
 vim.o.rnu = true
 vim.o.splitbelow = true
 vim.o.splitright = true
-vim.o.mouse = "i"
-
+vim.o.mouse = "a"
+--always show tabline
+--vim.o.showtabline = 2
 --popup menu transparency
 vim.opt.pumblend = 20
 
@@ -23,6 +24,7 @@ vim.keymap.set("n", "<leader>p", '"+p', { desc = "+Paste" })
 vim.keymap.set("v", "<leader>Y", '"*y', { desc = "*Yank" })
 vim.keymap.set("v", "<leader>D", '"*d', { desc = "*Cut" })
 vim.keymap.set("n", "<leader>P", '"*p', { desc = "*Paste" })
+
 
 -- setup leader key
 vim.g.mapleader = " "

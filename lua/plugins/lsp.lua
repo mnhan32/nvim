@@ -71,42 +71,26 @@ return {
         enabled = function()
           return vim.g.cmptoggle
         end,
-        source = {
-          { name = 'nvim_lsp' },
-          { name = 'nvim_lua' },
-          { name = 'path' },
-          { name = 'luasnip', keyword_length = 5 },
-          { name = 'buffer',  keyword_length = 5 },
-        },
-
+        sources = cmp.config.sources({
+          { name = 'nvim_lsp', keyword_length = 5,  priority = 30 },
+          { name = 'path',     priority = 10 },
+          { name = 'luasnip',  keyword_length = 2,  priority = 5 },
+          { name = 'buffer',   priority = 20 },
+        }),
         formatting = lsp_zero.cmp_format(),
         mapping = cmp.mapping({
           ['<Tab>'] = cmp_action.tab_complete(),
           ['S<Tab>'] = cmp_action.select_prev_or_fallback(),
-          --['<C-y>'] = cmp.mapping.confirm({ select = true }),
-          --['<A-t>'] = cmp.mapping.complete(),
-          --
-          ['<Up>'] = cmp.mapping(function(fallback)
-            cmp.close()
-            fallback()
-          end),
-          ['<Down>'] = cmp.mapping(function(fallback)
-            cmp.close()
-            fallback()
-          end),
-          ['<Left>'] = cmp.mapping(function(fallback)
-            cmp.close()
-            fallback()
-          end),
-          ['<Right>'] = cmp.mapping(function(fallback)
-            cmp.close()
-            fallback()
-          end),
+          ['<CR>'] = cmp.mapping.confirm({ select = false }),
+          ['<C-e>'] = cmp.mapping.abort(),
+          ['<Up>'] = cmp.mapping.abort(),
+          ['<Down>'] = cmp.mapping.abort(),
+          ['<Left>'] = cmp.mapping.abort(),
+          ['<Right>'] = cmp.mapping.abort(),
         }),
       })
       --
       --end of cmp config
-
       -- **
       -- outline
       local outline = require("outline")
