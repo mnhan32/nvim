@@ -26,7 +26,7 @@ vim.keymap.set("v", "<leader>D", '"*d', { desc = "*Cut" })
 vim.keymap.set("n", "<leader>P", '"*p', { desc = "*Paste" })
 
 --map buffer close
-vim.keymap.set("n", "<leader>x", "<CMD>bd<CR>", { desc = "Buffer delete." })
+vim.keymap.set("n", "<A-x>", "<CMD>bd<CR>", { desc = "Buffer delete." })
 
 -- setup leader key
 vim.g.mapleader = " "
