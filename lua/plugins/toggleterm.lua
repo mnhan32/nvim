@@ -1,9 +1,15 @@
+local wk = require("which-key")
+wk.register({
+  ["<leader>t"] = {
+    name = "+toggleterm",
+  },
+})
 -- toogleterm keymap
-vim.keymap.set( "n", "<leader>tf", ":ToggleTerm direction=float<CR>")
-vim.keymap.set( "n", "<leader>th", ":ToggleTerm size=10 direction=horizontal<CR>")
-vim.keymap.set( "n", "<leader>tv", ":ToggleTerm size=80 direction=vertical<CR>")
+vim.keymap.set("n", "<leader>tf", ":ToggleTerm direction=float<CR>")
+vim.keymap.set("n", "<leader>th", ":ToggleTerm size=10 direction=horizontal<CR>")
+vim.keymap.set("n", "<leader>tv", ":ToggleTerm size=80 direction=vertical<CR>")
 
-return{
+return {
   {
     "akinsho/toggleterm.nvim",
     cmd = { "ToggleTerm", "TermExec" },

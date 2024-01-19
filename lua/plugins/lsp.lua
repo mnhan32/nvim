@@ -73,16 +73,16 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load()
       --this toggle cmp on/off
       vim.g.cmptoggle = true
-      vim.keymap.set("n", "<leader>tc", "<cmd>lua vim.g.cmptoggle = not vim.g.cmptoggle<CR>",
+      vim.keymap.set("n", "<leader>q", "<cmd>lua vim.g.cmptoggle = not vim.g.cmptoggle<CR>",
         { desc = "Toggle nvim-cmp" })
       cmp.setup({
         enabled = function()
           return vim.g.cmptoggle
         end,
         sources = cmp.config.sources({
-          { name = 'nvim_lsp', keyword_length = 1,                                         priority = 30 },
+          { name = 'nvim_lsp', keyword_length = 1,                                           priority = 30 },
           { name = 'path',     priority = 10 },
-          { name = 'luasnip',  keyword_length = 2,                                         priority = 5 },
+          { name = 'luasnip',  keyword_length = 2,                                           priority = 5 },
           { name = 'buffer',   priority = 20 },
           { name = 'omni',     option = { disable_omnifuncs = { 'v:lua.vim.lsp.omnifunc' } } },
         }),

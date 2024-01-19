@@ -1,3 +1,9 @@
+local wk = require("which-key")
+wk.register({
+  ["<leader>s"] = {
+    name = "+sessions",
+  },
+})
 return {
   {
     "Shatur/neovim-session-manager",
