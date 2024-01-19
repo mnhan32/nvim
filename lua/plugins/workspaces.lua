@@ -13,15 +13,7 @@ function WorksapceAddUI()
   )
 end
 
-vim.keymap.set('n', '<leader>w', '<Nop>', { desc = "+Workspaces" })
 vim.keymap.set('n', '<leader>wa', WorksapceAddUI, { desc = "Add Workspace" })
-
-local wk = require("which-key")
-wk.register({
-  ["<leader>w"] = {
-    name = "+workspaces",
-  },
-})
 
 return {
   "natecraddock/workspaces.nvim",

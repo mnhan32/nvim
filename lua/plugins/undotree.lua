@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader>u", "<CMD>lua require('undotree').toggle()<CR>", { desc = "Undo Tree Toggle" })
+vim.keymap.set("n", "<leader>u", "<CMD>lua require('undotree').toggle()<CR>", { desc = "Toggle Undotree" })
 return {
   {
     "jiaoshijie/undotree",

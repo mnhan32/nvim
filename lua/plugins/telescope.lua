@@ -1,9 +1,3 @@
-local wk = require("which-key")
-wk.register({
-  ["<leader>f"] = {
-    name = "+find(telescope)",
-  },
-})
 return {
   {
     'nvim-telescope/telescope.nvim',

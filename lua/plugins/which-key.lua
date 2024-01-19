@@ -5,14 +5,24 @@ return {
     vim.o.timeout = true
     vim.o.timeoutlen = 300
   end,
-  config = true
-  --function()
-    --local wk = require("which-key")
-    --wk.register(mappings, opts)
-    --wk.register({
-    --  ["<leader>w"] = {
-    --    name = "+workspaces",
-    --  },
-    --})
-  --end
+  config = function()
+    local wk = require("which-key")
+    wk.register({
+      ["<leader>w"] = {
+        name = "+workspaces",
+      },
+      ["<leader>s"] = {
+        name = "+sessions",
+      },
+      ["<leader>t"] = {
+        name = "+toggleterm",
+      },
+      ["<leader>f"] = {
+        name = "+find(telescope)",
+      },
+      ["<leader>b"] = {
+        name = "+bufferline",
+      },
+    })
+  end
 }

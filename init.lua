@@ -12,7 +12,7 @@ vim.o.mouse = "a"
 --vim.o.showtabline = 2
 --popup menu transparency
 vim.opt.pumblend = 20
-
+vim.opt.termguicolors = true
 --use system clipboard,
 --on archlinux, install xclip for X11 system clipboard
 --because nvim on archlinux pacman compile nvim without clipboard
@@ -40,7 +40,7 @@ vim.keymap.set("n", "<leader>e", vim.cmd.Ex, { desc = "Explorer" })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Shift Selection Down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Shift Selection Up" })
 
---escape terminal mode
+--escape bufferlineeee
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n><C-w>w]], { desc = "Escape terminal" })
 
 --enable exrc
