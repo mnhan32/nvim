@@ -1,16 +1,18 @@
---local M = {}
---function M.input()
---  vim.ui.input({
---    prompt = "Workspace Name : "
---  }, function(input)
---    if input then
---      print("you enter ...", input)
---    end
---  end
---  )
---end
-
---vim.keymap.set('n', '<leader>wa', M.input())
+--use Dressing for ui.input()
+--use cmp-omni and setup "DressingInput" in cmp for path completion
+function WorksapceAddUI()
+  vim.ui.input({
+    prompt = "Workspace Dir : ",
+    completion = "dir",
+  }, function(input)
+    if input then
+      print("Adding Workspace ", input)
+      vim.cmd(string.format("WorkspacesAdd %s", input))
+    end
+  end
+  )
+end
+vim.keymap.set('n', '<leader>wa', WorksapceAddUI)
 
 return {
   "natecraddock/workspaces.nvim",

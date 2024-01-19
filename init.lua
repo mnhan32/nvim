@@ -69,4 +69,4 @@ require("lazy").setup({
 
 -- colorscheme
 -- tokyonight, kanagawa, or other installed colorscheme
-vim.cmd [[colorscheme kanagawa]]
+vim.cmd [[colorscheme catppuccin]]

@@ -13,19 +13,4 @@ return {
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Help Tags" })
     end
   },
-  {
-    "nvim-telescope/telescope-ui-select.nvim",
-    config = function()
-      local telescope = require("telescope")
-      local telescope_themes = require("telescope.themes")
-      telescope.setup({
-        extensions = {
-          ["ui-select"] = {
-            telescope_themes.get_dropdown {}
-          }
-        }
-      })
-      telescope.load_extension("ui-select")
-    end,
-  }
 }

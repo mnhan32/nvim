@@ -16,5 +16,7 @@ return {
 
     vim.keymap.set("n", "<A-.>", "<CMD>bnext<CR>", { desc = "Buffer next" }),
     vim.keymap.set("n", "<A-,>", "<CMD>bprevious<CR>", { desc = "Buffer previous" }),
+    vim.keymap.set("n", "<A-<>", "<CMD>BufferMovePrevious<CR>", { desc = "Move Buffer <<" }),
+    vim.keymap.set("n", "<A->>", "<CMD>BufferMoveNext<CR>", { desc = "Move Buffer >>" }),
   },
 }

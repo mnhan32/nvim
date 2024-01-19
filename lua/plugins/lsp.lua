@@ -1,11 +1,12 @@
 return {
   { 'williamboman/mason.nvim', },
-  { 'williamboman/mason-lspconfig.nvim', },
+  --{ 'williamboman/mason-lspconfig.nvim', },
   { 'neovim/nvim-lspconfig', },
   { 'hrsh7th/nvim-cmp', },
   { 'hrsh7th/cmp-nvim-lsp', },
   { 'hrsh7th/cmp-buffer', },
   { 'hrsh7th/cmp-path', },
+  { 'hrsh7th/cmp-omni', },
   { 'saadparwaiz1/cmp_luasnip', },
   { 'L3MON4D3/LuaSnip', },
   { 'rafamadriz/friendly-snippets', },
@@ -47,6 +48,9 @@ return {
       -- ************
       -- lspconfig
       require("lspconfig").lua_ls.setup({
+        on_attach = on_attach,
+        capbilities = capbilities,
+        filetypes = { "lua" },
         settings = {
           Lua = {
             diagnostics = { globals = { 'vim' },
@@ -54,7 +58,11 @@ return {
           },
         },
       })
-      require("lspconfig").pylsp.setup({})
+      require("lspconfig").pylsp.setup({
+        on_attach = on_attach,
+        capbilities = capbilities,
+        filetypes = { "python" },
+      })
       --require("lspconfig").pyright.setup({})
       --require("lspconfig").ruff_lsp.setup({})
       -- end of lspconfig
@@ -72,10 +80,11 @@ return {
           return vim.g.cmptoggle
         end,
         sources = cmp.config.sources({
-          { name = 'nvim_lsp', keyword_length = 5,  priority = 30 },
+          { name = 'nvim_lsp', keyword_length = 1,                                         priority = 30 },
           { name = 'path',     priority = 10 },
-          { name = 'luasnip',  keyword_length = 2,  priority = 5 },
+          { name = 'luasnip',  keyword_length = 2,                                         priority = 5 },
           { name = 'buffer',   priority = 20 },
+          { name = 'omni',     option = { disable_omnifuncs = { 'v:lua.vim.lsp.omnifunc' } } },
         }),
         formatting = lsp_zero.cmp_format(),
         mapping = cmp.mapping({
@@ -87,6 +96,16 @@ return {
           ['<Down>'] = cmp.mapping.abort(),
           ['<Left>'] = cmp.mapping.abort(),
           ['<Right>'] = cmp.mapping.abort(),
+        }),
+        --view = "native",
+        --cmp.setup.cmdline("@", {
+        --  sources = cmp.config.sources({
+        --    { name = "path" },
+        --    { name = "cmdline" },
+        --  }),
+        --}),
+        cmp.setup.filetype("DressingInput", {
+          sources = cmp.config.sources { { name = 'omni' } },
         }),
       })
       --
