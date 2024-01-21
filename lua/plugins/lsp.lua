@@ -94,16 +94,9 @@ return {
           ['<C-e>'] = cmp.mapping.abort(),
           ['<Up>'] = cmp.mapping.abort(),
           ['<Down>'] = cmp.mapping.abort(),
-          ['<Left>'] = cmp.mapping.abort(),
-          ['<Right>'] = cmp.mapping.abort(),
+          --['<Left>'] = cmp.mapping.abort(),
+          --['<Right>'] = cmp.mapping.abort(),
         }),
-        --view = "native",
-        --cmp.setup.cmdline("@", {
-        --  sources = cmp.config.sources({
-        --    { name = "path" },
-        --    { name = "cmdline" },
-        --  }),
-        --}),
         cmp.setup.filetype("DressingInput", {
           sources = cmp.config.sources { { name = 'omni' } },
         }),
@@ -111,6 +104,7 @@ return {
       --
       --end of cmp config
       -- **
+
       -- outline
       local outline = require("outline")
       vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>", { desc = "Toggle Outline" })

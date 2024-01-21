@@ -1,5 +1,17 @@
 return {
   {
+    "tiagovla/scope.nvim",
+    config = function()
+      vim.opt.sessionoptions = { -- required
+          "buffers",
+          "tabpages",
+          "globals",
+      }
+      local scope = require("scope")
+      scope.setup({})
+    end
+  },
+  {
     'akinsho/bufferline.nvim',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
@@ -8,16 +20,18 @@ return {
       local bufferline = require("bufferline")
       bufferline.setup({
         options = {
-          numbers = "both",
-          separator_style = "slope",
+          numbers = "ordinal", --"both",
+          themable = true,
+          separator_style = "slant",
           indicator = {
+            icon = '|',
             style = 'underline'
           },
           offsets = {
             {
               filetype = "neo-tree",
               text = "File Explorer",
-              text_align = "left",
+              text_align = "center",
               separator = true,
             }
           },
@@ -35,7 +49,7 @@ return {
     vim.keymap.set("n", "<leader>b#", "<Cmd>BufferLineGoToBuffer -3<CR>", { silent = true, desc = "Go To Buffer -3" }),
     vim.keymap.set("n", "<leader>b@", "<Cmd>BufferLineGoToBuffer -2<CR>", { silent = true, desc = "Go To Buffer -2" }),
     vim.keymap.set("n", "<leader>b!", "<Cmd>BufferLineGoToBuffer -1<CR>", { silent = true, desc = "Go To Buffer -1" }),
-    vim.keymap.set("n", "<A-.", "<CMD>BufferLineCycleNext<CR>", { desc = "Buffer next" }),
+    vim.keymap.set("n", "<A-.>", "<CMD>BufferLineCycleNext<CR>", { desc = "Buffer next" }),
     vim.keymap.set("n", "<A-,>", "<CMD>BufferLineCyclePrev<CR>", { desc = "Buffer previous" }),
   },
 }

@@ -13,4 +13,13 @@ return {
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Help Tags" })
     end
   },
+  {
+    "LukasPietzschmann/telescope-tabs",
+    config = function()
+      local telescopetabs = require("telescope-tabs")
+      telescopetabs.setup({
+        vim.keymap.set('n', '<leader>ft', "<CMD>Telescope telescope-tabs list_tabs<CR>", { desc = "Tabs" })
+      })
+    end
+  },
 }

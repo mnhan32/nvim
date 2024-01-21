@@ -12,7 +12,7 @@ vim.o.mouse = "a"
 --vim.o.showtabline = 2
 --popup menu transparency
 vim.opt.pumblend = 20
-vim.opt.termguicolors = true
+vim.opt.termguicolors = false --true
 --use system clipboard,
 --on archlinux, install xclip for X11 system clipboard
 --because nvim on archlinux pacman compile nvim without clipboard
@@ -67,6 +67,7 @@ require("lazy").setup({
   { import = "plugins" },
 })
 
--- colorscheme
--- tokyonight, kanagawa, or other installed colorscheme
-vim.cmd [[colorscheme catppuccin]]
+--colorscheme
+--require installed colorscheme plugin first in colorscheme folder
+--tokyonight, kanagawa, or other installed colorscheme
+vim.cmd [[colorscheme catppuccin-mocha]]
