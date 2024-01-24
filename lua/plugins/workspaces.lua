@@ -13,7 +13,8 @@ function WorksapceAddUI()
   )
 end
 
-vim.keymap.set('n', '<leader>ww', WorksapceAddUI, { desc = "Add Workspace" })
+vim.keymap.set('n', '<leader>wa', WorksapceAddUI, { desc = "Add Workspace" })
+vim.keymap.set('n', '<leader>ww', "<CMD>WorkspacesAdd<CR>", { desc = "Add Current Dir to Workspace" })
 
 return {
   {
