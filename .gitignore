@@ -1,3 +1,7 @@
+#after folder for 
+ftplugin/
+after/
+
 # Compiled Lua sources
 luac.out
 #vim
