@@ -12,6 +12,7 @@ return {
   { 'rafamadriz/friendly-snippets', },
   { 'lukas-reineke/lsp-format.nvim', },
   { 'hedyhli/outline.nvim', },
+  { 'stevearc/aerial.nvim', },
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v3.x',
@@ -107,7 +108,7 @@ return {
 
       -- outline
       local outline = require("outline")
-      vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
+      vim.keymap.set("n", "<leader>l", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
       outline.setup({
         symbols = {
           filter = {
@@ -118,6 +119,18 @@ return {
       })
       --
       -- end of outline config
+
+      -- aerial
+      local aerial = require("aerial")
+      vim.keymap.set("n", "<leader>o", "<cmd>AerialToggle!<CR>", { desc = "Toggle Aerial" })
+      aerial.setup({
+        on_attach = function(bufnr)
+          -- Jump forwards/backwards with '{' and '}'
+          vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+          vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+        end,
+      })
+      --end of aerial config
     end
   },
 }
