@@ -6,6 +6,7 @@ Very Basic Neovim Configuration.
     - [folke/Lazy.nvim](https://github.com/folke/lazy.nvim)
 - LSP
     - [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim)
+    - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
     - [VonHeikemen/lsp-zero.nvim](https://github.com/VonHeikemen/lsp-zero.nvim)
 - Fuzzy Find
     - [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
