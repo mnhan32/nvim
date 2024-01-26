@@ -1,7 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
+    build = ":TSUpdate", -- ":TSInstallFromGrammar", -- ":TSInstall",
     config = function()
       -- use curl, for some reason git is not stable on my laptop
       require("nvim-treesitter.install").prefer_git = false
@@ -10,7 +10,7 @@ return {
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "c", "lua", "python", "markdown", "sql",
-          "xml", "yaml", "json", "vim", "vimdoc", 
+          "xml", "yaml", "json", "vim", "vimdoc",
           "javascript", "html" },
         sync_install = false,
         highlight = { enable = true },

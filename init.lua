@@ -47,7 +47,7 @@ vim.keymap.set("t", "<Esc>", [[<C-\><C-n><C-w>w]], { desc = "Escape terminal" })
 vim.o.exrc = true
 
 --python executable
-vim.g.python3_host_prog = "/usr/bin/python"
+--vim.g.python3_host_prog = "/usr/bin/python"
 
 -- lazy vim pacakage management
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
