@@ -1,6 +1,8 @@
 #after folder for 
 ftplugin/
 after/
+#ignore lazy plugin version info
+lazy-lock.json
 
 # Compiled Lua sources
 luac.out
