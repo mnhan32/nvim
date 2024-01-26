@@ -1,5 +1,5 @@
 # nvim
-Very Basic Nvim Configuration.
+Very Basic Neovim Configuration.
 
 ## Key Plugins
 - Package Manager : 
