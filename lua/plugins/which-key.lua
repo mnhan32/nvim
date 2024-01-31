@@ -11,6 +11,9 @@ return {
       ["<leader>w"] = {
         name = "+workspaces",
       },
+      ["<leader>r"] = {
+        name = "+rltvnumbr",
+      },
       ["<leader>s"] = {
         name = "+sessions",
       },
