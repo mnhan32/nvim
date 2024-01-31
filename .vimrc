@@ -3,7 +3,7 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set smarttab
-set rnu
+set nu
 set splitbelow
 set splitright
 set mouse=i

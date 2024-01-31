@@ -4,7 +4,9 @@ vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.smarttab = true
-vim.o.rnu = true
+--vim.o.rnu = true
+-- learn to use absolute line number
+vim.o.nu = true
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.mouse = "a"
