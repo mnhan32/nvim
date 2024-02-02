@@ -23,6 +23,9 @@ return {
       ["<leader>b"] = {
         name = "+bufferline",
       },
+      ["<leader>h"] = {
+        name = "harpoon",
+      },
     })
   end
 }
