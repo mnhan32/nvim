@@ -14,9 +14,6 @@ return {
       ["<leader>r"] = {
         name = "+rltvnumbr",
       },
-      ["<leader>s"] = {
-        name = "+sessions",
-      },
       ["<leader>t"] = {
         name = "+toggleterm",
       },

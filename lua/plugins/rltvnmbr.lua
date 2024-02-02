@@ -5,5 +5,13 @@
 vim.keymap.set('n', '<leader>rr', "<CMD>RltvNmbr<CR>", { desc = "Show Relative Number" })
 vim.keymap.set('n', '<leader>ra', "<CMD>RltvNmbr!<CR>", { desc = "Hide Relative Number" })
 return {
-  { "vim-scripts/RltvNmbr.vim", },
+  {
+    "vim-scripts/RltvNmbr.vim",
+    config = function()
+      local wk = require("which-key")
+      wk.register({
+        ["<leader>r"] = { name = "RltvNmbr", },
+      })
+    end
+  },
 }
