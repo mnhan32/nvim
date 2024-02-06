@@ -12,6 +12,18 @@ return {
       vim.keymap.set('n', '<leader>fw', builtin.current_buffer_fuzzy_find, { desc = "Find in current buffer" })
       vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Buffers" })
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Help Tags" })
+      vim.keymap.set('n', '<leader>fF', function()
+        vim.ui.input({
+          prompt = "Find Files in Dir : ",
+          completion = "dir",
+        }, function(input)
+          if input then
+            print("Telescope find files in: ", input)
+            vim.cmd(string.format("Telescope find_files search_dirs=%s", input))
+          end
+        end
+        )
+      end, { desc = "Find Files in Selected Dir." })
     end
   },
   {
