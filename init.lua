@@ -51,6 +51,7 @@ vim.o.exrc = true
 --python executable
 --vim.g.python3_host_prog = "/usr/bin/python"
 
+
 -- lazy vim pacakage management
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -68,6 +69,31 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   { import = "plugins" },
 })
+
+-- use plenary.nvim path module here
+-- add a command to copy current filepath
+vim.api.nvim_create_user_command("CopyFilePath", function()
+  local pathlib = require("plenary.path")
+  local path = pathlib.new(vim.fn.expand("%:t")):absolute()
+  vim.fn.setreg("+", path)
+  vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
+
+-- add a command to copy current file directory
+vim.api.nvim_create_user_command("CopyFileDirectory", function()
+  local pathlib = require("plenary.path")
+  local path = pathlib.new(vim.fn.expand("%:t")):absolute()
+  local parent = pathlib.new(path):parent()
+  vim.fn.setreg("+", parent)
+  vim.notify('Copied "' .. parent .. '" to the clipboard!')
+end, {})
+
+-- add a command to copy current filename
+vim.api.nvim_create_user_command("CopyFileName", function()
+  local path = vim.fn.expand("%:t")
+  vim.fn.setreg("+", path)
+  vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
 
 --colorscheme
 --require installed colorscheme plugin first in colorscheme folder
