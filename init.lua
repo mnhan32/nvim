@@ -73,19 +73,24 @@ require("lazy").setup({
 -- use plenary.nvim path module here
 -- add a command to copy current filepath
 vim.api.nvim_create_user_command("CopyFilePath", function()
-  local pathlib = require("plenary.path")
-  local path = pathlib.new(vim.fn.expand("%:t")):absolute()
+  local path = vim.fn.expand("%:p")
+  if vim.loop.os_uname().sysname:find 'Windows' and true or false then
+    --vim.notify("hey, windows")
+    path = path:gsub("/", "\\");
+  end
   vim.fn.setreg("+", path)
   vim.notify('Copied "' .. path .. '" to the clipboard!')
 end, {})
 
 -- add a command to copy current file directory
 vim.api.nvim_create_user_command("CopyFileDirectory", function()
-  local pathlib = require("plenary.path")
-  local path = pathlib.new(vim.fn.expand("%:t")):absolute()
-  local parent = pathlib.new(path):parent()
-  vim.fn.setreg("+", parent)
-  vim.notify('Copied "' .. parent .. '" to the clipboard!')
+  local path = vim.fn.expand("%:p:h")
+  if vim.loop.os_uname().sysname:find 'Windows' and true or false then
+    --vim.notify("hey, windows")
+    path = path:gsub("/", "\\");
+  end
+  vim.fn.setreg("+", path)
+  vim.notify('Copied "' .. path .. '" to the clipboard!')
 end, {})
 
 -- add a command to copy current filename
