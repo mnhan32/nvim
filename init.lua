@@ -14,6 +14,7 @@ vim.o.mouse = "a"
 --vim.o.showtabline = 2
 --popup menu transparency
 vim.opt.pumblend = 20
+vim.opt.colorcolumn = "79"
 vim.opt.termguicolors = false --true
 --use system clipboard,
 --on archlinux, install xclip for X11 system clipboard
@@ -99,6 +100,13 @@ vim.api.nvim_create_user_command("CopyFileName", function()
   vim.fn.setreg("+", path)
   vim.notify('Copied "' .. path .. '" to the clipboard!')
 end, {})
+
+vim.o.guifont = "FiraMono Nerd Font Mono:h12"
+--neovide config
+if vim.g.neovide then
+  vim.g.neovide_scroll_animation_length = 0.1;
+  vim.g.neovide_cursor_trail_size = 0;
+end
 
 --colorscheme
 --require installed colorscheme plugin first in colorscheme folder
