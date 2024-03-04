@@ -90,7 +90,7 @@ return {
         formatting = lsp_zero.cmp_format(),
         mapping = cmp.mapping({
           ['<Tab>'] = cmp_action.tab_complete(),
-          ['S<Tab>'] = cmp_action.select_prev_or_fallback(),
+          ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
           ['<CR>'] = cmp.mapping.confirm({ select = false }),
           ['<C-e>'] = cmp.mapping.abort(),
           ['<Up>'] = cmp.mapping.abort(),
