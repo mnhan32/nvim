@@ -74,7 +74,6 @@ require("lazy").setup({
   { import = "plugins" },
 })
 
--- use plenary.nvim path module here
 -- add a command to copy current filepath
 vim.api.nvim_create_user_command("CopyFilePath", function()
   local path = vim.fn.expand("%:p")
@@ -104,6 +103,7 @@ vim.api.nvim_create_user_command("CopyFileName", function()
   vim.notify('File Name : ' .. path)
 end, {})
 
+-- set fonts
 vim.opt.guifont = "FiraMono Nerd Font Mono:h12"
 --neovide config
 if vim.g.neovide then
