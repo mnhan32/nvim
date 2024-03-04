@@ -1,25 +1,28 @@
 -- default vim settings
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
-vim.o.shiftwidth = 2
-vim.o.expandtab = true
-vim.o.smarttab = true
---vim.o.rnu = true
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.smarttab = true
+--vim.opt.rnu = true
 -- learn to use absolute line number
-vim.o.nu = true
-vim.o.splitbelow = true
-vim.o.splitright = true
-vim.o.mouse = "a"
+vim.opt.nu = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.mouse = "a"
 --always show tabline
---vim.o.showtabline = 2
+--vim.opt.showtabline = 2
 --popup menu transparency
 vim.opt.pumblend = 20
 vim.opt.colorcolumn = "79"
-vim.opt.termguicolors = false --true
+vim.opt.termguicolors = true
+vim.opt.inccommand = "split"
+vim.opt.virtualedit = "block"
 --use system clipboard,
 --on archlinux, install xclip for X11 system clipboard
 --because nvim on archlinux pacman compile nvim without clipboard
-vim.opt.clipboard:append { "unnamed", "unnamedplus" }
+--vim.opt.clipboard:append { "unnamed", "unnamedplus" }
+vim.opt.clipboard = "unnamedplus"
 --system clipboard, do not how to keep "*p after paste
 vim.keymap.set("v", "<leader>y", '"+y', { desc = "+Yank" })
 vim.keymap.set("v", "<leader>d", '"+d', { desc = "+Cut" })
@@ -47,7 +50,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Shift Selection Up" })
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n><C-w>w]], { desc = "Escape terminal" })
 
 --enable exrc
-vim.o.exrc = true
+vim.opt.exrc = true
 
 --python executable
 --vim.g.python3_host_prog = "/usr/bin/python"
@@ -101,14 +104,9 @@ vim.api.nvim_create_user_command("CopyFileName", function()
   vim.notify('Copied "' .. path .. '" to the clipboard!')
 end, {})
 
-vim.o.guifont = "FiraMono Nerd Font Mono:h12"
+vim.opt.guifont = "FiraMono Nerd Font Mono:h12"
 --neovide config
 if vim.g.neovide then
   vim.g.neovide_scroll_animation_length = 0.1;
   vim.g.neovide_cursor_trail_size = 0;
 end
-
---colorscheme
---require installed colorscheme plugin first in colorscheme folder
---tokyonight, kanagawa, or other installed colorscheme
-vim.cmd [[colorscheme catppuccin-mocha]]

@@ -9,9 +9,11 @@ return {
       require("nvim-treesitter.install").compilier = { "clang", "gcc", "zig" }
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
-          "c", "lua", "python", "markdown", "sql",
-          "xml", "yaml", "json", "vim", "vimdoc",
-          "javascript", "html" },
+          "c", "lua", "vim", "vimdoc", "query",
+          "python", "markdown", "sql", "cpp", "csv",
+          "xml", "yaml", "json", "javascript", "html"
+        },
+        auto_install = true,
         sync_install = false,
         highlight = { enable = true },
         indent = { enable = true },
