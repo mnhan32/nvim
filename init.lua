@@ -83,7 +83,7 @@ vim.api.nvim_create_user_command("CopyFilePath", function()
     path = path:gsub("/", "\\");
   end
   vim.fn.setreg("+", path)
-  vim.notify('Copied "' .. path .. '" to the clipboard!')
+  vim.notify('File Path : ' .. path)
 end, {})
 
 -- add a command to copy current file directory
@@ -94,14 +94,14 @@ vim.api.nvim_create_user_command("CopyFileDirectory", function()
     path = path:gsub("/", "\\");
   end
   vim.fn.setreg("+", path)
-  vim.notify('Copied "' .. path .. '" to the clipboard!')
+  vim.notify('File Directory : ' .. path)
 end, {})
 
 -- add a command to copy current filename
 vim.api.nvim_create_user_command("CopyFileName", function()
   local path = vim.fn.expand("%:t")
   vim.fn.setreg("+", path)
-  vim.notify('Copied "' .. path .. '" to the clipboard!')
+  vim.notify('File Name : ' .. path)
 end, {})
 
 vim.opt.guifont = "FiraMono Nerd Font Mono:h12"
