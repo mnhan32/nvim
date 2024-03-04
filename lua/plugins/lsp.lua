@@ -101,6 +101,9 @@ return {
         cmp.setup.filetype("DressingInput", {
           sources = cmp.config.sources { { name = 'omni' } },
         }),
+        experimental = {
+          ghost_text = true,
+        },
       })
       --
       --end of cmp config
