@@ -54,35 +54,43 @@ return {
 				},
 			})
 			local lsp = require("lspconfig")
-			local userprofile = os.getenv("UserProfile")
-			local pystub = userprofile .. "\\AppData\\Local\\nvim-data\\python-stub"
+
+			local userprofile = os.getenv("HOME")
+			local pystub = userprofile .. "/.local/share/nvim/python-stub"
+			if userprofile == nil then
+				userprofile = os.getenv("UserProfile")
+				pystub = userprofile .. "\\AppData\\Local\\nvim-data\\python-stub"
+			end
 			-- jedi
-			lsp.jedi_language_server.setup({
-				filetypes = { "python" },
-				init_options = {
-					workspace = {
-						extraPaths = {
-							pystub,
-						},
-					},
-				},
-			})
-			-- pylsp
-			--lsp.pylsp.setup({
+			--lsp.jedi_language_server.setup({
 			--	filetypes = { "python" },
-			--	settings = {
-			--		pylsp = {
-			--			plugins = {
-			--				jedi = {
-			--					extra_paths = {
-			--						pystub,
-			--					},
-			--				},
+			--	init_options = {
+			--		workspace = {
+			--			extraPaths = {
+			--				pystub,
 			--			},
 			--		},
 			--	},
 			--})
+			--pylsp
+			lsp.pylsp.setup({
+				filetypes = { "python" },
+				settings = {
+					pylsp = {
+						plugins = {
+							jedi = {
+								extra_paths = {
+									pystub,
+								},
+							},
+						},
+					},
+				},
+			})
 			-- end of pylsp setup
+			-- clangd
+			lsp.clangd.setup({})
+			-- end of clangd setup
 			-- lua_ls
 			lsp.lua_ls.setup({
 				settings = {
@@ -106,24 +114,6 @@ return {
 			-- end of lua setup
 		end,
 	},
-
-	{ -- Autoformat
-		"stevearc/conform.nvim",
-		opts = {
-			notify_on_error = false,
-			format_on_save = {
-				timeout_ms = 500,
-				lsp_fallback = true,
-			},
-			formatters_by_ft = {
-				lua = { "stylua" },
-				python = { "jedi_language_server" },
-				-- python = { "isort", "black" },
-				-- javascript = { { "prettierd", "prettier" } },
-			},
-		},
-	},
-
 	{ -- Autocompletion
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
