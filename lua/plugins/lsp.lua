@@ -56,21 +56,32 @@ return {
 			local lsp = require("lspconfig")
 			local userprofile = os.getenv("UserProfile")
 			local pystub = userprofile .. "\\AppData\\Local\\nvim-data\\python-stub"
-			-- pylsp
-			lsp.pylsp.setup({
+			-- jedi
+			lsp.jedi_language_server.setup({
 				filetypes = { "python" },
-				settings = {
-					pylsp = {
-						plugins = {
-							jedi = {
-								extra_paths = {
-									pystub,
-								},
-							},
+				init_options = {
+					workspace = {
+						extraPaths = {
+							pystub,
 						},
 					},
 				},
 			})
+			-- pylsp
+			--lsp.pylsp.setup({
+			--	filetypes = { "python" },
+			--	settings = {
+			--		pylsp = {
+			--			plugins = {
+			--				jedi = {
+			--					extra_paths = {
+			--						pystub,
+			--					},
+			--				},
+			--			},
+			--		},
+			--	},
+			--})
 			-- end of pylsp setup
 			-- lua_ls
 			lsp.lua_ls.setup({
