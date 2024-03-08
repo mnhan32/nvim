@@ -117,7 +117,7 @@ return {
 			},
 			formatters_by_ft = {
 				lua = { "stylua" },
-				python = { "pylsp" },
+				python = { "jedi_language_server" },
 				-- python = { "isort", "black" },
 				-- javascript = { { "prettierd", "prettier" } },
 			},
