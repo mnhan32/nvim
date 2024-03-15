@@ -42,7 +42,9 @@ return {
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				completion = { completeopt = "menu,menuone,noinsert" },
+				-- do not want any suggestion selected by default
+				preselect = cmp.PreselectMode.None,
+				completion = { completeopt = "menu,menuone,noinsert,noselect" },
 
 				-- For an understanding of why these mappings were
 				-- chosen, you will need to read `:help ins-completion`

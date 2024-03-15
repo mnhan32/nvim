@@ -55,58 +55,57 @@ vim.opt.exrc = true
 --python executable
 --vim.g.python3_host_prog = "/usr/bin/python"
 
-
 -- lazy vim pacakage management
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { import = "plugins" },
+	{ import = "plugins" },
 })
 
 -- add a command to copy current filepath
 vim.api.nvim_create_user_command("CopyFilePath", function()
-  local path = vim.fn.expand("%:p")
-  if vim.loop.os_uname().sysname:find 'Windows' and true or false then
-    --vim.notify("hey, windows")
-    path = path:gsub("/", "\\");
-  end
-  vim.fn.setreg("+", path)
-  vim.notify('File Path : ' .. path)
+	local path = vim.fn.expand("%:p")
+	if vim.loop.os_uname().sysname:find("Windows") and true or false then
+		--vim.notify("hey, windows")
+		path = path:gsub("/", "\\")
+	end
+	vim.fn.setreg("+", path)
+	vim.notify("File Path : " .. path)
 end, {})
 
 -- add a command to copy current file directory
 vim.api.nvim_create_user_command("CopyFileDirectory", function()
-  local path = vim.fn.expand("%:p:h")
-  if vim.loop.os_uname().sysname:find 'Windows' and true or false then
-    --vim.notify("hey, windows")
-    path = path:gsub("/", "\\");
-  end
-  vim.fn.setreg("+", path)
-  vim.notify('File Directory : ' .. path)
+	local path = vim.fn.expand("%:p:h")
+	if vim.loop.os_uname().sysname:find("Windows") and true or false then
+		--vim.notify("hey, windows")
+		path = path:gsub("/", "\\")
+	end
+	vim.fn.setreg("+", path)
+	vim.notify("File Directory : " .. path)
 end, {})
 
 -- add a command to copy current filename
 vim.api.nvim_create_user_command("CopyFileName", function()
-  local path = vim.fn.expand("%:t")
-  vim.fn.setreg("+", path)
-  vim.notify('File Name : ' .. path)
+	local path = vim.fn.expand("%:t")
+	vim.fn.setreg("+", path)
+	vim.notify("File Name : " .. path)
 end, {})
 
 -- set fonts
 vim.opt.guifont = "FiraMono Nerd Font Mono:h12"
 --neovide config
 if vim.g.neovide then
-  vim.g.neovide_scroll_animation_length = 0.1;
-  vim.g.neovide_cursor_trail_size = 0;
+	vim.g.neovide_scroll_animation_length = 0.1
+	vim.g.neovide_cursor_trail_size = 0
 end

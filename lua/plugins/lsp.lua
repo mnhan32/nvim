@@ -4,6 +4,7 @@ return {
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
+			{ "folke/neodev.nvim", opts = {} },
 			--"WhoIsSethDaniel/mason-tool-installer.nvim",
 			--fidget show lsp progress percentage
 			{ "j-hui/fidget.nvim", opts = {} },
@@ -28,6 +29,14 @@ return {
 					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 					map("K", vim.lsp.buf.hover, "Hover Documentation")
 
+					-- toggle diagnostics
+					map("<leader>lv", function()
+						if vim.diagnostic.is_disabled() == false then
+							vim.diagnostic.disable()
+						else
+							vim.diagnostic.enable()
+						end
+					end, "Toggle diagnostic")
 					-- The following two autocommands are used to highlight references of the
 					-- When you move your cursor, the highlights will be cleared (the second autocommand).
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -53,6 +62,12 @@ return {
 					"lua_ls",
 				},
 			})
+
+			local neodev = require("neodev")
+			neodev.setup({
+				library = { plugins = { "nvim-dap-ui" }, types = true },
+			})
+
 			local lsp = require("lspconfig")
 			-- custom python stubs directory based on OS
 			local userprofile = os.getenv("HOME")
@@ -91,6 +106,9 @@ return {
 			-- clangd
 			lsp.clangd.setup({})
 			-- end of clangd setup
+			-- marksman
+			lsp.marksman.setup({})
+			-- end of marksman setup
 			-- lua_ls
 			lsp.lua_ls.setup({
 				settings = {
